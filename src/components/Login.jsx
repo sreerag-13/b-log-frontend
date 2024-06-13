@@ -22,6 +22,8 @@ const Login = () => {
                     </div>
                     <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                         <button className="btn btn-success">sigin</button>
+                        <a href="/signin">register</a>
+                        <a href="/">login</a>
                     </div>
                 </div>
             </div>
