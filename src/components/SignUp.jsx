@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+    const navigate=useNavigate()
   
         const [sig,changedata] =useState(
             {
@@ -19,24 +21,33 @@ const SignUp = () => {
             console.log(sig)
             axios.post("http://localhost:8080/signin",sig).then((response) => {
                 console.log(response.data)
-                if (response.data.status === "success") {
-                    alert("success")
+                if (response.data.status=="incorrect password") {
+                    alert("incorect password")
     
-                } else {
-                    alert("error")
+                } else if(response.data.status=="incorrect email"){
+                    alert("incorrect email")
     
                 }
+                else{
+                let token=response.data.token
+                let userId=response.data.userId
+                sessionStorage.setItem("userId",userId)
+                sessionStorage.setItem("token",token)
+                navigate("/CreatePost")
+                }
             }
-            )
+            ).catch((error)=>{
+                console.log(error)
+            })
         }
   return (
     <div>
         <div className="container">
             <div className="row">
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"></div>
-                <div className="row">
+                <div className="row g-3">
                     <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                        <label htmlFor="" className="form-label">Login</label>
+                        <label htmlFor="" className="form-label">Email</label>
                         <input type="text" className="form-control" name='Email' value={sig.Email} onChange={inputhandler}/>
                     </div>
                     <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -45,9 +56,9 @@ const SignUp = () => {
                     </div>
                     <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                         <button className="btn btn-success" onClick={readvalue}>Login</button>
-                        <a href="/signin">register</a>
-                        <a href="/">home</a>
-
+                    </div>
+                    <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <a href="/signin" className="btn btn-secondary">new register</a>
                     </div>
                 </div>
 
