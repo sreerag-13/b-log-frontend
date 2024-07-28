@@ -5,6 +5,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ViewAll from './components/ViewAll';
+import ViewMy from './components/ViewMy';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
   <Route path="/signin" element={<Login/>}/>
   <Route path="/CreatePost" element={<CreatePost/>}/>
   <Route path="/viewall" element={<ViewAll/>}/>
+  <Route path="/ViewMy" element={<ViewMy/>}/>
 
 
 

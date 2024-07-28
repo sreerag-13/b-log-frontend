@@ -18,7 +18,7 @@ const NavBar = () => {
           <a class="nav-link" href="/viewall">view all post</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">my post</a>
+          <a class="nav-link" href="/ViewMy">my post</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
