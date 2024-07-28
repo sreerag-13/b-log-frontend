@@ -30,8 +30,9 @@ const SignUp = () => {
                 }
                 else{
                 let token=response.data.token
-                let userId=response.data.userId
+                let userId=response.data.userid
                 console.log(userId)
+                console.log(token)
                 sessionStorage.setItem("userId",userId)
                 sessionStorage.setItem("token",token)
                 navigate("/CreatePost")
